@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+   
+
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index.htm">Controlador</prop>
+                <prop key="Agregar.htm">Controlador</prop>
+                 <prop key="Editar.htm">Controlador</prop>
+                 <prop key="Eliminar.htm">Controlador</prop>
+                 <prop key="Login.htm">ControladorRegistro</prop>
+                 <prop key="Registro.htm">ControladorRegistro</prop>
+                 <prop key="Inicio.htm">ControladorInicio</prop>
+                 <prop key="Contactanos.htm">ControladorContacto</prop>
+                 <prop key="IndexEmpleados.htm">ControladorRegistro</prop>
+                 <prop key="IndexPlatos.htm">ControladorPlatillos</prop>
+                 <prop key="AgregarPlatillos.htm">ControladorPlatillos</prop>
+                 <prop key="EditarPlato.htm">ControladorPlatillos</prop>
+                 <prop key="RegistrarVenta.htm">ControladorVentas</prop>
+                 <prop key="indexVentasRealizadas.htm">ControladorReporte</prop>
+                 <prop key="indexCategoria.htm">ControladorCategoria</prop>
+                 <prop key="AgregarCategoria.htm">ControladorCategoria</prop>
+                 <prop key="graficasfiltro.htm">ControladorFiltros</prop>
+                 <prop key="graficacircular.htm">ControladorGraficaCircular</prop>
+                  <prop key="maximosalario.htm">ControladorMax</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <!--
+    The index controller.
+    -->
+    <bean name ="Controlador" class="Controler.Controlador"/>
+    <bean name ="ControladorRegistro" class="Controler.ControladorRegistro"/>
+    <bean name ="ControladorInicio" class="Controler.ControladorInicio"/>
+    <bean name ="ControladorContacto" class="Controler.ControladorContacto"/>
+    <bean name ="ControladorPlatillos" class="Controler.ControladorPlatillos"/>
+    <bean name ="ControladorVentas" class="Controler.ControladorVentas"/>
+    <bean name ="ControladorReporte" class="Controler.ControladorReporte"/>
+    <bean name ="ControladorCategoria" class="Controler.ControladorCategoria"/>
+    <bean name ="ControladorFiltros" class="Controler.ControladorFiltros"/>
+    <bean name ="ControladorGraficaCircular" class="Controler.ControladorGraficaCircular"/>
+    <bean name="ControladorMax" class="Controler.ControladorMax"/>
+</beans>
